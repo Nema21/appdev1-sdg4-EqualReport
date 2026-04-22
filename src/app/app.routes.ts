@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ReportDashboardComponent } from './pages/report-dashboard/report-dashboard.component';
-import { ReportDetailComponent } from './pages/report-detail/report-detail.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DetailComponent } from './pages/detail/detail.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
 
-  { path: 'dashboard', component: ReportDashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
 
-  { path: 'detail/:id', component: ReportDetailComponent },
+  { path: 'detail/:id', component: DetailComponent },
 
   { path: 'about', component: AboutComponent },
 
