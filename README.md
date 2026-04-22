@@ -15,7 +15,7 @@ This project promotes access to educational materials by allowing users to explo
 ## Group Members
 
 1. Levie Amiten — Project Lead
-2. San Drex Biore — Reporter
+2. San Drex Biore — Data Engineer
 3. Harry Bahatan — UI Developer
 
 ---
