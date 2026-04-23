@@ -1,16 +1,14 @@
-import { TestBed } from '@angular/core/testing';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { ReportService } from './report.service';
+@Injectable({
+  providedIn: 'root'
+})
+export class ReportService {
+  private http = inject(HttpClient);
 
-describe('ReportService', () => {
-  let service: ReportService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ReportService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+  getBooks(): Observable<any> {
+    return this.http.get('https://openlibrary.org/subjects/education.json');
+  }
+}
