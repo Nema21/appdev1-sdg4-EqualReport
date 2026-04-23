@@ -1,1 +1,6 @@
-<p>detail works!</p>
+<h2>Course Details</h2>
+
+<div *ngIf="report">
+  <h3>{{ report.title }}</h3>
+  <p>{{ report.body }}</p>
+</div>
