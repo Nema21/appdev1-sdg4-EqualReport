@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReportService, Report } from '../../services/report.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-detail',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './detail.component.html'
 })
 export class DetailComponent implements OnInit {

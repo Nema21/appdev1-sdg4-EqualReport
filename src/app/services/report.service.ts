@@ -13,7 +13,7 @@ export interface Report {
 })
 export class ReportService {
 
-  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private apiUrl = 'https://openlibrary.org/subjects/science';
 
   constructor(private http: HttpClient) {}
 
