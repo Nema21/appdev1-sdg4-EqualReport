@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<h2>LearnHub Courses (SDG 4)</h2>
+
+<div *ngIf="reports$ | async as reports; else loading">
+  <ul>
+    <li *ngFor="let r of reports">
+      <strong>{{ r.title }}</strong>
+      <button (click)="viewDetails(r.id)">View</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #loading>Loading courses...</ng-template>
