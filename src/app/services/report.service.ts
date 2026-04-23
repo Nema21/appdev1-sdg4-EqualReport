@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 export interface Report {
   id: number;
@@ -13,15 +13,29 @@ export interface Report {
 })
 export class ReportService {
 
-  private apiUrl = 'https://openlibrary.org/subjects/science';
+  private apiUrl = 'https://dev.to/api/articles';
 
   constructor(private http: HttpClient) {}
 
   getReports(): Observable<Report[]> {
-    return this.http.get<Report[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      map(res =>
+        res.map(item => ({
+          id: item.id,
+          title: item.title,
+          body: item.description || item.body_markdown
+        }))
+      )
+    );
   }
 
   getReportById(id: number): Observable<Report> {
-    return this.http.get<Report>(`${this.apiUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+      map(item => ({
+        id: item.id,
+        title: item.title,
+        body: item.description || item.body_markdown
+      }))
+    );
   }
 }

@@ -1,0 +1,16 @@
+li button {
+  margin-left: 10px;
+  padding: 6px 14px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4CAF50 !important;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+li button:hover {
+  background-color: #45a049 !important;
+  transform: translateY(-1px);
+}
