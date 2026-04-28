@@ -1,16 +1,27 @@
-li button {
-  margin-left: 10px;
-  padding: 6px 14px;
-  font-size: 13px;
-  border: none;
-  border-radius: 6px;
-  background-color: #4CAF50 !important;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s ease;
+.title {
+  margin-bottom: 20px;
+  color: #0a2540;
 }
 
-li button:hover {
-  background-color: #45a049 !important;
-  transform: translateY(-1px);
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0;
 }

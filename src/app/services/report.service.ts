@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
-export interface Report {
-  id: number;
+export interface Book {
+  key: string;
   title: string;
-  body: string;
+  author: string;
 }
 
 @Injectable({
@@ -13,29 +13,32 @@ export interface Report {
 })
 export class ReportService {
 
-  private apiUrl = 'https://dev.to/api/articles';
+  private apiUrl = 'https://openlibrary.org/search.json?q=education';
 
   constructor(private http: HttpClient) {}
 
-  getReports(): Observable<Report[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+  // 🔹 GET LIST OF BOOKS
+  getBooks(): Observable<Book[]> {
+    return this.http.get<any>(this.apiUrl).pipe(
       map(res =>
-        res.map(item => ({
-          id: item.id,
+        res.docs.slice(0, 10).map((item: any) => ({
+          key: item.key,
           title: item.title,
-          body: item.description || item.body_markdown
+          author: item.author_name?.[0] || 'Unknown'
         }))
       )
     );
   }
 
-  getReportById(id: number): Observable<Report> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+  // 🔹 GET SINGLE BOOK (DETAIL PAGE)
+  getBookByKey(key: string): Observable<Book> {
+    return this.http.get<any>(`https://openlibrary.org${key}.json`).pipe(
       map(item => ({
-        id: item.id,
+        key: item.key,
         title: item.title,
-        body: item.description || item.body_markdown
+        author: 'Unknown' // simplified for now
       }))
     );
   }
+
 }

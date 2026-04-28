@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ReportService, Report } from '../../services/report.service';
+import { ReportService, Book } from '../../services/report.service';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,13 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 export class DashboardComponent {
 
-  reports$: Observable<Report[]>;
+  books$: Observable<Book[]>;
 
-  constructor(private service: ReportService, private router: Router) {
-    this.reports$ = this.service.getReports();
+  constructor(private service: ReportService) {
+    this.books$ = this.service.getBooks();
   }
 
-  viewDetails(id: number) {
-    this.router.navigate(['/dashboard', id]);
-  }
 }

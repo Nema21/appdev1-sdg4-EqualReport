@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ReportService, Report } from '../../services/report.service';
+import { ReportService, Book } from '../../services/report.service';
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-detail',
   standalone: true,
@@ -10,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DetailComponent implements OnInit {
 
-  report!: Report;
+  book$!: Observable<Book>;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,9 +20,7 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.service.getReportById(id).subscribe(data => {
-      this.report = data;
-    });
+    const key = this.route.snapshot.paramMap.get('key')!;
+    this.book$ = this.service.getBookByKey(key);
   }
 }
