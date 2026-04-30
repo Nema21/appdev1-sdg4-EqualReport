@@ -3,8 +3,14 @@
   color: #0a2540;
 }
 
+h2 {
+  text-align: center;
+  color: #2e7d32;
+}
+
 .grid {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px;
 }
 

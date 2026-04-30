@@ -1,14 +1,15 @@
-<h2 class="title">Learning Resources (SDG 4)</h2>
+<h2>Educational Books</h2>
 
-<div *ngIf="books$ | async as books; else loading">
+@if (loading()) {
+  <p>Loading books...</p>
+}
+
+<div *ngIf="books$ | async as data">
   <div class="grid">
-    <div class="card" *ngFor="let b of books">
-      <h3>{{ b.title }}</h3>
-      <p>Author: {{ b.author }}</p>
-    </div>
+    <app-book-card
+      *ngFor="let book of data.works"
+      [book]="book"
+      (view)="viewDetails($event)">
+    </app-book-card>
   </div>
 </div>
-
-<ng-template #loading>
-  Loading books...
-</ng-template>
