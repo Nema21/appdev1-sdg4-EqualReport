@@ -1,44 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-
-export interface Book {
-  key: string;
-  title: string;
-  author: string;
-}
+import { Observable, catchError, of } from 'rxjs';
+import { OpenLibraryResponse } from '../models/book.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
 
-  private apiUrl = 'https://openlibrary.org/search.json?q=education';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
-
-  // 🔹 GET LIST OF BOOKS
-  getBooks(): Observable<Book[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      map(res =>
-        res.docs.slice(0, 10).map((item: any) => ({
-          key: item.key,
-          title: item.title,
-          author: item.author_name?.[0] || 'Unknown'
-        }))
-      )
+  getBooks(): Observable<OpenLibraryResponse> {
+    return this.http.get<OpenLibraryResponse>(
+      'https://openlibrary.org/subjects/education.json?limit=10'
+    ).pipe(
+      catchError(() => {
+        return of({ works: [] }); // prevents crash
+      })
     );
   }
-
-  // 🔹 GET SINGLE BOOK (DETAIL PAGE)
-  getBookByKey(key: string): Observable<Book> {
-    return this.http.get<any>(`https://openlibrary.org${key}.json`).pipe(
-      map(item => ({
-        key: item.key,
-        title: item.title,
-        author: 'Unknown' // simplified for now
-      }))
-    );
-  }
-
 }
