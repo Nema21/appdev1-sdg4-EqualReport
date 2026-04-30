@@ -1,0 +1,31 @@
+.about-header {
+  text-align: center;
+  background: #2e7d32;
+  color: white;
+  padding: 30px 20px;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 25px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #2e7d32;
+}
+
+.about-footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px;
+  font-size: 14px;
+  color: #777;
+}
