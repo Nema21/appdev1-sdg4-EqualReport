@@ -1,0 +1,5 @@
+<div class="card">
+  <h3>{{ book.title | titlecase }}</h3>
+  <p>{{ book.author_name?.[0] || 'Unknown Author' }}</p>
+  <button (click)="onView()">View</button>
+</div>
