@@ -1,0 +1,15 @@
+<h2>Educational Books</h2>
+
+@if (loading()) {
+  <p>Loading books...</p>
+}
+
+<div *ngIf="books$ | async as data">
+  <div class="grid">
+    <app-book-card
+      *ngFor="let book of data.works"
+      [book]="book"
+      (view)="viewDetails($event)">
+    </app-book-card>
+  </div>
+</div>
