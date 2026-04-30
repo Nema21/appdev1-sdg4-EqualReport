@@ -1,10 +1,12 @@
 <h2>Book Details</h2>
 
 <div *ngIf="book$ | async as book; else loading">
-  <h3>{{ book.title }}</h3>
-  <p>Author: {{ book.author }}</p>
+  <div *ngIf="book; else notFound">
+    <h3>{{ book.title }}</h3>
+    <p>{{ book.author_name?.[0] }}</p>
+    <p>{{ book.first_publish_year }}</p>
+  </div>
 </div>
 
-<ng-template #loading>
-  <p>Loading details...</p>
-</ng-template>
+<ng-template #loading>Loading...</ng-template>
+<ng-template #notFound>Not found</ng-template>
