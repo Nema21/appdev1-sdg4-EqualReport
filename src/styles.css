@@ -1,24 +1,31 @@
+/* SDG 4 Theme (Education - Blue) */
+:root {
+  --primary: #1976d2;
+  --secondary: #42a5f5;
+  --accent: #e3f2fd;
+  --text: #1a1a1a;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f5f7fb;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background-color: rgb(209, 209, 209);
 }
 
 .container {
-  max-width: 1000px;
-  margin: auto;
   padding: 20px;
 }
 
-.btn {
-  padding: 8px 14px;
-  background-color: #60c8f8;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
+/* reusable card */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 
-.btn:hover {
-  background-color: #3aa7db;
+.card:hover {
+  transform: translateY(-4px);
 }

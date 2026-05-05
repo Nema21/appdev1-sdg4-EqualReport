@@ -10,7 +10,7 @@ import { OpenLibraryResponse } from '../../models/book.model';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, BookCardComponent],
+  imports: [CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

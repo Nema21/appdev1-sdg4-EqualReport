@@ -1,20 +1,77 @@
-nav {
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
   padding: 15px 40px;
-  background-color: #0a2540;
-}
-
-a {
+  background: #0f172a;
   color: white;
+}
+
+/* LOGO */
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* NAV LINKS (CENTER) */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
   text-decoration: none;
+  color: #cbd5f5;
   font-weight: 500;
+  transition: 0.3s;
 }
 
-a.active {
-  border-bottom: 2px solid #60c8f8;
+.nav-links a:hover {
+  color: #38bdf8;
 }
 
-a:hover {
-  color: #60c8f8;
+.active {
+  color: #38bdf8;
+  border-bottom: 2px solid #38bdf8;
+}
+
+/* RIGHT SIDE */
+.nav-right {
+  display: flex;
+}
+
+/* BUTTON */
+.login-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+
+  background: #0686bd;
+  color: #0b2155;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #46aad8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
 }

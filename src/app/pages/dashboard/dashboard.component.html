@@ -1,15 +1,41 @@
-<h2>Educational Books</h2>
+<section class="dashboard">
+  <h2 class="title">📚 Educational Books</h2>
 
-@if (loading()) {
-  <p>Loading books...</p>
-}
-
-<div *ngIf="books$ | async as data">
-  <div class="grid">
-    <app-book-card
-      *ngFor="let book of data.works"
-      [book]="book"
-      (view)="viewDetails($event)">
-    </app-book-card>
+  <!-- Loading -->
+  <div *ngIf="loading()" class="loading">
+    Loading books...
   </div>
-</div>
+
+  <!-- Books -->
+  <div class="grid" *ngIf="books$ | async as data">
+    
+    <div 
+      class="card"
+      *ngFor="let book of data.works"
+      (click)="viewDetails(book.key)"
+    >
+
+      <!-- Cover -->
+      <img 
+        *ngIf="book.cover_i"
+        [src]="'https://covers.openlibrary.org/b/id/' + book.cover_i + '-M.jpg'"
+        alt="Book cover"
+      />
+
+      <!-- Content -->
+      <div class="card-content">
+        <h3>{{ book.title | titlecase }}</h3>
+
+        <p *ngIf="book.author_name">
+          ✍️ {{ book.author_name[0] }}
+        </p>
+
+        <span *ngIf="book.first_publish_year">
+          📅 {{ book.first_publish_year }}
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
