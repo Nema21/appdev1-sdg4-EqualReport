@@ -1,5 +1,18 @@
 <div class="card">
+  <img 
+    *ngIf="book.cover_i"
+    [src]="'https://covers.openlibrary.org/b/id/' + book.cover_i + '-M.jpg'"
+    alt="Book cover"
+  />
+
+
   <h3>{{ book.title | titlecase }}</h3>
+
   <p>{{ book.author_name?.[0] || 'Unknown Author' }}</p>
+
+  <span *ngIf="book.first_publish_year">
+    📅 {{ book.first_publish_year }}
+  </span>
+
   <button (click)="onView()">View</button>
 </div>

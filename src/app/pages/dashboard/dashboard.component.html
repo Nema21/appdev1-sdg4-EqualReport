@@ -6,36 +6,19 @@
     Loading books...
   </div>
 
+  <!-- Error -->
+  <div *ngIf="error()" class="error">
+    ❌ Failed to load books. Please try again.
+  </div>
+
   <!-- Books -->
   <div class="grid" *ngIf="books$ | async as data">
-    
-    <div 
-      class="card"
+
+    <app-book-card
       *ngFor="let book of data.works"
-      (click)="viewDetails(book.key)"
-    >
-
-      <!-- Cover -->
-      <img 
-        *ngIf="book.cover_i"
-        [src]="'https://covers.openlibrary.org/b/id/' + book.cover_i + '-M.jpg'"
-        alt="Book cover"
-      />
-
-      <!-- Content -->
-      <div class="card-content">
-        <h3>{{ book.title | titlecase }}</h3>
-
-        <p *ngIf="book.author_name">
-          ✍️ {{ book.author_name[0] }}
-        </p>
-
-        <span *ngIf="book.first_publish_year">
-          📅 {{ book.first_publish_year }}
-        </span>
-      </div>
-
-    </div>
+      [book]="book"
+      (view)="viewDetails($event)">
+    </app-book-card>
 
   </div>
 </section>

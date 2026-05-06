@@ -4,19 +4,21 @@ import { Router } from '@angular/router';
 
 import { BookCardComponent } from '../../components/book-card/book-card.component';
 import { ReportService } from '../../services/report.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, catchError, of } from 'rxjs';
 import { OpenLibraryResponse } from '../../models/book.model';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, BookCardComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
 
   loading = signal(true);
+  error = signal(false);
+
   books$!: Observable<OpenLibraryResponse>;
 
   constructor(
@@ -24,7 +26,15 @@ export class DashboardComponent {
     private router: Router
   ) {
     this.books$ = this.service.getBooks().pipe(
-      tap(() => this.loading.set(false))
+      tap(() => {
+        this.loading.set(false);
+        this.error.set(false);
+      }),
+      catchError(() => {
+        this.loading.set(false);
+        this.error.set(true);
+        return of({ works: [] });
+      })
     );
   }
 
