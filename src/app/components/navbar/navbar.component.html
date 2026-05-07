@@ -2,11 +2,11 @@
 
   <!-- LEFT: LOGO -->
   <div class="logo">
-    📚 LearnHub
+    <a routerLink="/">📚 LearnHub</a>
   </div>
 
   <!-- CENTER: NAV LINKS -->
-  <nav class="nav-links">
+  <nav class="nav-links" role="navigation" aria-label="Main navigation">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
     <a routerLink="/about" routerLinkActive="active">About</a>
@@ -14,7 +14,12 @@
 
   <!-- RIGHT: BUTTON -->
   <div class="nav-right">
-    <button class="login-btn" (click)="login()">Login</button>
+    <button *ngIf="!auth.isLoggedIn" class="login-btn" (click)="login()" aria-label="Login to LearnHub">
+      🔐 Login
+    </button>
+    <button *ngIf="auth.isLoggedIn" class="logout-btn" (click)="logout()" aria-label="Logout from LearnHub">
+      👋 Logout
+    </button>
   </div>
 
 </header>
