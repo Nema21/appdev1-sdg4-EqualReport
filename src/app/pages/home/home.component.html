@@ -1,34 +1,80 @@
-<section class="hero">
+<!-- HERO SECTION -->
+<section class="hero" aria-label="LearnHub Hero">
   <div class="hero-content">
+    <p class="sdg-chip">🌍 UN Sustainable Development Goal 4</p>
     <h1>📚 LearnHub</h1>
     <p class="tagline">
-      Empowering Education for Everyone — Supporting SDG 4
+      Empowering Education for Everyone
     </p>
-
     <p class="description">
-      Discover free educational resources, explore books, and grow your knowledge
-      anytime, anywhere.
+      Discover thousands of free educational resources, explore books,
+      and grow your knowledge anytime, anywhere — because quality education
+      is a right, not a privilege.
     </p>
 
-    <button class="cta-btn" (click)="login()">
-      Get Started
-    </button>
+    <div class="hero-actions">
+      <button class="cta-btn" (click)="login()" aria-label="Get started with LearnHub">
+        🚀 Get Started — Free
+      </button>
+      <a routerLink="/about" class="learn-more-btn" aria-label="Learn about SDG 4">
+        Learn About SDG 4 →
+      </a>
+    </div>
   </div>
 </section>
 
-<section class="features">
-  <div class="feature-card">
-    <h3>📖 Free Learning</h3>
-    <p>Access open educational resources from trusted sources.</p>
+<!-- FEATURES SECTION -->
+<section class="features" aria-label="LearnHub Features">
+  <div class="section-header">
+    <h2>Why LearnHub?</h2>
+    <p>Supporting quality education worldwide</p>
   </div>
 
-  <div class="feature-card">
-    <h3>🌍 SDG 4 Focus</h3>
-    <p>Promoting inclusive and equitable quality education.</p>
-  </div>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <span class="icon" aria-hidden="true">📖</span>
+      <h3>Free Learning</h3>
+      <p>Access open educational resources from trusted global sources like Open Library.</p>
+    </article>
 
-  <div class="feature-card">
-    <h3>🚀 Easy Access</h3>
-    <p>Simple, fast, and accessible learning platform.</p>
+    <article class="feature-card">
+      <span class="icon" aria-hidden="true">🌍</span>
+      <h3>SDG 4 Focused</h3>
+      <p>Promoting inclusive and equitable quality education and lifelong learning for all.</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="icon" aria-hidden="true">🚀</span>
+      <h3>Easy Access</h3>
+      <p>Simple, fast, and accessible — browse hundreds of educational books in seconds.</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="icon" aria-hidden="true">🔍</span>
+      <h3>Smart Search</h3>
+      <p>Search by subject and discover books aligned with your learning goals.</p>
+    </article>
+  </div>
+</section>
+
+<!-- SDG STATS SECTION -->
+<section class="sdg-section" aria-label="SDG 4 Impact">
+  <div class="sdg-content">
+    <h2>📊 The Education Gap</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">773M</span>
+        <span class="stat-label">Adults lack basic literacy skills worldwide</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">244M</span>
+        <span class="stat-label">Children out of school globally</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">SDG 4</span>
+        <span class="stat-label">Ensures inclusive, quality education for all by 2030</span>
+      </div>
+    </div>
+    <p class="sdg-cta">LearnHub is our contribution to closing this gap — one book at a time.</p>
   </div>
 </section>

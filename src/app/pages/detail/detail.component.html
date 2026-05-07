@@ -1,12 +1,60 @@
-<h2>Book Details</h2>
+<main class="detail-page">
 
-<div *ngIf="book$ | async as book; else loading">
-  <div *ngIf="book; else notFound">
-    <h3>{{ book.title }}</h3>
-    <p>{{ book.author_name?.[0] }}</p>
-    <p>{{ book.first_publish_year }}</p>
+  <button class="back-btn" (click)="goBack()" aria-label="Go back to dashboard">
+    ← Back to Dashboard
+  </button>
+
+  <div *ngIf="book$ | async as book; else loading">
+
+    <div *ngIf="book; else notFound" class="book-detail">
+
+      <img
+        [src]="getCoverUrl(book.cover_i)"
+        [alt]="'Cover of ' + book.title"
+        class="cover-large"
+      />
+
+      <div class="book-info">
+        <h1 class="book-title">{{ book.title | titlecase }}</h1>
+
+        <p class="author">✍️ <strong>Author:</strong>
+          {{ book.author_name?.[0] ?? 'Unknown Author' }}
+        </p>
+
+        <p *ngIf="book.first_publish_year" class="year">
+          📅 <strong>First Published:</strong> {{ book.first_publish_year }}
+        </p>
+
+        <p *ngIf="book.edition_count" class="editions">
+          📖 <strong>Editions:</strong> {{ book.edition_count }}
+        </p>
+
+        <div class="badge-row" *ngIf="book.first_publish_year">
+          <span class="badge" [class.classic]="book.first_publish_year < 2000">
+            {{ book.first_publish_year < 2000 ? '📜 Classic' : '🆕 Modern' }}
+          </span>
+        </div>
+
+        <div class="sdg-note">
+          <p>🌍 This book is part of our <strong>SDG 4 — Quality Education</strong> collection. Learning is a lifelong journey.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
 
-<ng-template #loading>Loading...</ng-template>
-<ng-template #notFound>Not found</ng-template>
+  <ng-template #loading>
+    <div class="loading" role="status">
+      <div class="spinner"></div>
+      <p>Loading book details...</p>
+    </div>
+  </ng-template>
+
+  <ng-template #notFound>
+    <div class="not-found">
+      <p>📭 Book not found.</p>
+      <button (click)="goBack()">← Return to Dashboard</button>
+    </div>
+  </ng-template>
+
+</main>

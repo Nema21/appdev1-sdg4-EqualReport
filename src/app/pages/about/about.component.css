@@ -1,31 +1,122 @@
 .about-header {
-  text-align: center;
-  background: #2e7d32;
+  background: linear-gradient(135deg, #1e3a8a, #1976d2);
   color: white;
-  padding: 30px 20px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header-content p {
+  font-size: 1.1rem;
+  color: #bfdbfe;
 }
 
 .about-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 section {
-  margin-bottom: 25px;
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
+  margin-bottom: 30px;
+  background: #f8fafc;
+  padding: 24px 28px;
+  border-radius: 16px;
+  border-left: 4px solid #1976d2;
 }
 
 h2 {
-  color: #2e7d32;
+  font-size: 1.4rem;
+  color: #1e3a8a;
+  margin-bottom: 14px;
 }
 
+p {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.targets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.targets-list li {
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* TEAM */
+.team-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.member-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+}
+
+.avatar {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.member-card h3 {
+  font-size: 0.95rem;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.member-card p {
+  font-size: 0.8rem;
+  color: #1976d2;
+  margin: 0;
+}
+
+/* TECH BADGES */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-badge {
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* FOOTER */
 .about-footer {
   text-align: center;
-  margin-top: 30px;
-  padding: 15px;
-  font-size: 14px;
-  color: #777;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+}
+
+@media (max-width: 768px) {
+  .team-grid { flex-direction: column; }
+  .header-content h1 { font-size: 1.8rem; }
 }

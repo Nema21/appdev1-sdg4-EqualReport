@@ -10,7 +10,7 @@ export class ReportService {
 
   private http = inject(HttpClient);
 
-  getBooks(): Observable<OpenLibraryResponse> {
+  getBooks(subject: string): Observable<OpenLibraryResponse> {
     return this.http.get<OpenLibraryResponse>(
       'https://openlibrary.org/subjects/education.json?limit=10'
     ).pipe(
