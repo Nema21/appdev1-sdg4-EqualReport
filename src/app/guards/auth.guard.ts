@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
 @Injectable({
@@ -7,15 +7,14 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
 
   isLoggedIn = false;
-
-  constructor(private router: Router) {}
+  private router = inject(Router);
 
   canActivate(): boolean {
     if (this.isLoggedIn) {
       return true;
     }
 
-    alert('Access denied. Please login first.');
+    alert('🔐 Access denied. Please login first to access the Dashboard.');
     this.router.navigate(['/']);
     return false;
   }
