@@ -18,4 +18,9 @@ export class HomeComponent {
     this.auth.isLoggedIn = true;
     this.router.navigate(['/dashboard']);
   }
+  
+  logout() {
+    this.auth.isLoggedIn = false;
+    this.router.navigate(['/']);
+  }
 }
