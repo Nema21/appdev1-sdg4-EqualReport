@@ -1,18 +1,31 @@
-<div class="card">
-  <img 
-    *ngIf="book.cover_i"
-    [src]="'https://covers.openlibrary.org/b/id/' + book.cover_i + '-M.jpg'"
-    alt="Book cover"
+<article class="card" tabindex="0" (keyup.enter)="onView()" role="article" [attr.aria-label]="book.title">
+
+  <img
+    [src]="getCoverUrl()"
+    [alt]="'Cover of ' + book.title"
+    class="cover"
+    loading="lazy"
   />
 
+  <div class="card-content">
+    <h3 class="book-title">{{ book.title | titlecase }}</h3>
+    <p class="author">✍️ {{ book.author_name?.[0] || 'Unknown Author' }}</p>
 
-  <h3>{{ book.title | titlecase }}</h3>
+    <div class="meta">
+      <span *ngIf="book.first_publish_year" class="year">
+        📅 {{ book.first_publish_year }}
+      </span>
+      <span *ngIf="book.edition_count" class="editions">
+        📖 {{ book.edition_count }} editions
+      </span>
+    </div>
 
-  <p>{{ book.author_name?.[0] || 'Unknown Author' }}</p>
+    <!-- StatusBadge child component - @Input/@Output demonstrated -->
+    <app-status-badge *ngIf="book.first_publish_year" [year]="book.first_publish_year"></app-status-badge>
 
-  <span *ngIf="book.first_publish_year">
-    📅 {{ book.first_publish_year }}
-  </span>
+    <button class="view-btn" (click)="onView()" [attr.aria-label]="'View details for ' + book.title">
+      View Details →
+    </button>
+  </div>
 
-  <button (click)="onView()">View</button>
-</div>
+</article>
