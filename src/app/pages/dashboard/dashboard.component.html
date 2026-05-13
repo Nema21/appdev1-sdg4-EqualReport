@@ -41,3 +41,23 @@
     </app-book-card>
   </section>
 </main>
+
+  <!-- Notes Section -->
+<section class="notes-section">
+  <div class="notes-card">
+
+    <h3>📝 Study Notes</h3>
+
+    <p class="notes-subtitle">
+      Save quick learning notes while exploring books.
+    </p>
+
+    <textarea
+      [(ngModel)]="notes"
+      (input)="onNotesChange()"
+      rows="6"
+      placeholder="Write your study notes here..."
+    ></textarea>
+
+  </div>
+</section>

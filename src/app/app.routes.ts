@@ -10,11 +10,10 @@ import { unsavedGuard } from './guards/unsaved.guard';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about',
-  component: AboutComponent,
-  canDeactivate: [unsavedGuard]
+  component: AboutComponent
   },
 // Main Features
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], canDeactivate: [unsavedGuard] },
 { path: 'dashboard/:id', component: DetailComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];

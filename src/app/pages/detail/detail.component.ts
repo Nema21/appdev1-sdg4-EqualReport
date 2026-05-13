@@ -25,7 +25,7 @@ export class DetailComponent {
     const id = this.route.snapshot.paramMap.get('id') ?? '';
     this.bookId.set(id);
 
-    this.book$ = this.service.getBooks('bible').pipe(
+    this.book$ = this.service.getBooks('education').pipe(
       map(res => res.works.find(b => b.key.includes(id)))
     );
   }

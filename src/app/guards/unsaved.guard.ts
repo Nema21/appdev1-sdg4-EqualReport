@@ -1,5 +1,10 @@
 import { CanDeactivateFn } from '@angular/router';
 
-export const unsavedGuard: CanDeactivateFn<any> = () => {
-  return confirm('Leave this page?');
+export const unsavedGuard: CanDeactivateFn<any> = (component) => {
+
+  if (component.hasUnsavedChanges) {
+    return confirm('You have unsaved notes. Leave anyway?');
+  }
+
+  return true;
 };
